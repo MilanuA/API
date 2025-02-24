@@ -1,0 +1,37 @@
+@GameAPI_HostAddress = http://localhost:5164
+
+GET {{GameAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST{{GameAPI_HostAddress}}/Engines
+Content-Type: application/json
+
+{
+  "Name": "Test Engine"
+}
+
+### 
+DELETE {{GameAPI_HostAddress}}/Engines/5
+
+###
+
+PUT {{GameAPI_HostAddress}}/Engines/1
+Content-Type: application/json
+
+{
+  "Id": 1,
+  "Name": "Updated Engine Name"
+}
+
+
+### PUT request with ID mismatch (should return 400 Bad Request)
+
+PUT {{GameAPI_HostAddress}}/Engines/1
+Content-Type: application/json
+
+{
+  "Id": 2, 
+  "Name": "Updated Engine Name"
+}
